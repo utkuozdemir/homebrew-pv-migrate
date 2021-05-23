@@ -11,15 +11,15 @@ class PvMigrate < Formula
 
   if OS.mac? && Hardware::CPU.intel?
     url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.5.5/pv-migrate_0.5.5_darwin_x86_64.tar.gz"
-    sha256 "0d0f9d9899f8c69bdd1bf9e89c98898867f09fe6f718b062354be9e7aef3a764"
+    sha256 "21dbdea77026a1b2987224b0de3f44df91184b337f011e8d39abd54363c170cd"
   end
   if OS.linux? && Hardware::CPU.intel?
     url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.5.5/pv-migrate_0.5.5_linux_x86_64.tar.gz"
-    sha256 "10ee787f44d016d8e7388dd8524b3fce117e9404f23ed23a435b946fe0544b54"
+    sha256 "fc44f2d0587ae36d550d9a0f701e52d6cfe49e368e80b3ef611c2879e1944569"
   end
   if OS.linux? && Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
     url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.5.5/pv-migrate_0.5.5_linux_arm64.tar.gz"
-    sha256 "9467d18b8db69ade5a2007c192c7d2d40a80d201e2e9c7a670139bac8339e48c"
+    sha256 "bced2fd1611123fcdc95de9584eb79fa67551fd36985c9afad945c626c498394"
   end
 
   def install
