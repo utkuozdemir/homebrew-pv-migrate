@@ -8,8 +8,16 @@ on:
       - "**.md"
 jobs:
   install:
-    runs-on: macos-10.15
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - macos-10.15
+          - ubuntu-20.04
     steps:
+#      - name: Install homebrew
+#        run:
+#        if: matrix.os == 'ubuntu-20.04'
       - name: Brew tap
         run: brew tap utkuozdemir/pv-migrate
       - name: Brew install
