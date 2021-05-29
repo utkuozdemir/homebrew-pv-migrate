@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+    paths-ignore:
+      - "**.md"
 jobs:
   install:
-    runs-on: macos-latest
+    runs-on: macos-10.15
     steps:
       - name: Brew tap
         run: brew tap utkuozdemir/pv-migrate
