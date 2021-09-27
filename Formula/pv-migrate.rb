@@ -5,25 +5,25 @@
 class PvMigrate < Formula
   desc "Persistent volume migration plugin for Kubernetes"
   homepage "https://github.com/utkuozdemir/pv-migrate"
-  version "0.6.1"
+  version "0.6.2"
   license "Apache-2.0"
   bottle :unneeded
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.1/pv-migrate_0.6.1_darwin_x86_64.tar.gz"
-      sha256 "3cfcc02a05a5253e60a553bdc9c8bab3e777951be630ae27e0c28fb57e337ffb"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_darwin_x86_64.tar.gz"
+      sha256 "abb7a4d356fc0a6744e88d3a078055eb88b1eee1ae3e1bc8e1a3046334d4fc6a"
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.1/pv-migrate_0.6.1_linux_x86_64.tar.gz"
-      sha256 "f87d183d59eb4b2c8c62331a6e5bab8a665313b3d9e1a5c7949d30f0bd41a8e6"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_linux_x86_64.tar.gz"
+      sha256 "8a1a94e7761f94d6498427553754b957526f3a7821f559abaa6e68d76d279d11"
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.1/pv-migrate_0.6.1_linux_arm64.tar.gz"
-      sha256 "68cdc987dc517ca278a6d586abe0d39536af2d29d5277bf959738b84eb0eaeda"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_linux_arm64.tar.gz"
+      sha256 "77b455fb4681c9cbf7532796946fe7a05d6eabb35f0aad3e1c24c2bc65ad4e54"
     end
   end
 
