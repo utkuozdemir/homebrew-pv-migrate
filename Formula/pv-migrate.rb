@@ -5,30 +5,45 @@
 class PvMigrate < Formula
   desc "Persistent volume migration plugin for Kubernetes"
   homepage "https://github.com/utkuozdemir/pv-migrate"
-  version "0.6.2"
+  version "0.6.3"
   license "Apache-2.0"
-  bottle :unneeded
 
   on_macos do
+    if Hardware::CPU.arm?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.3/pv-migrate_0.6.3_darwin_arm64.tar.gz"
+      sha256 "3eae9da93266ca34c570d15bcb64a117efd878456b5bda282ce29d4a4ae04d4c"
+
+      def install
+        bin.install "pv-migrate"
+      end
+    end
     if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_darwin_x86_64.tar.gz"
-      sha256 "abb7a4d356fc0a6744e88d3a078055eb88b1eee1ae3e1bc8e1a3046334d4fc6a"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.3/pv-migrate_0.6.3_darwin_x86_64.tar.gz"
+      sha256 "241577d891926cb8fb0462fd3a75f2525a160c5edb592b5e2933df9291614c8c"
+
+      def install
+        bin.install "pv-migrate"
+      end
     end
   end
 
   on_linux do
     if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_linux_x86_64.tar.gz"
-      sha256 "8a1a94e7761f94d6498427553754b957526f3a7821f559abaa6e68d76d279d11"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.3/pv-migrate_0.6.3_linux_x86_64.tar.gz"
+      sha256 "e0a3928fc397df52072bd11c46210de81a164de46cd468a12f9e9ef505fe4bc9"
+
+      def install
+        bin.install "pv-migrate"
+      end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.2/pv-migrate_0.6.2_linux_arm64.tar.gz"
-      sha256 "77b455fb4681c9cbf7532796946fe7a05d6eabb35f0aad3e1c24c2bc65ad4e54"
-    end
-  end
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.6.3/pv-migrate_0.6.3_linux_arm64.tar.gz"
+      sha256 "961f49222dfae0c84cd830e4c07cf32385af8b5faefcd17bd2ccedc58d83c436"
 
-  def install
-    bin.install "pv-migrate"
+      def install
+        bin.install "pv-migrate"
+      end
+    end
   end
 
   test do
