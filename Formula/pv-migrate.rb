@@ -5,13 +5,13 @@
 class PvMigrate < Formula
   desc "Persistent volume migration plugin for Kubernetes"
   homepage "https://github.com/utkuozdemir/pv-migrate"
-  version "0.10.5"
+  version "0.10.6"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.5/pv-migrate_v0.10.5_darwin_x86_64.tar.gz"
-      sha256 "5ae76c692ce2926c99cf443458eb7afd84be366a8a67a26983878ddb8b6ab2d7"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.6/pv-migrate_v0.10.6_darwin_x86_64.tar.gz"
+      sha256 "09f91b243588fe0b2abf664990958743bb5d9089127ed34246ee08e7cbba8881"
 
       def install
         bin.install "pv-migrate"
@@ -21,8 +21,8 @@ class PvMigrate < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.5/pv-migrate_v0.10.5_darwin_arm64.tar.gz"
-      sha256 "307a7a95c9e47b3adbf0490ef5912b311515093a06334e249d67f457240b943f"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.6/pv-migrate_v0.10.6_darwin_arm64.tar.gz"
+      sha256 "399e6842f233f409cd18a5bbee82b3ca5a550534a05e59adaa17b1627dbefe35"
 
       def install
         bin.install "pv-migrate"
@@ -34,9 +34,20 @@ class PvMigrate < Formula
   end
 
   on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.6/pv-migrate_v0.10.6_linux_x86_64.tar.gz"
+      sha256 "547ceeab1f807cf73fd1813091e8d99020e6ead0cb7dcafff329eb6b7741dc7a"
+
+      def install
+        bin.install "pv-migrate"
+        bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
+        zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
+        fish_completion.install "completions/pv-migrate.fish"
+      end
+    end
     if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.5/pv-migrate_v0.10.5_linux_armv7.tar.gz"
-      sha256 "ed6b0bb2534da934d4cc21c4ed30e54dfa884b6c0b087593dc791fe33ad5c9d9"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.6/pv-migrate_v0.10.6_linux_armv7.tar.gz"
+      sha256 "48a3a603e015bbaac4a1fab674e300906dcc90d26cfba3d95a2cf605f44ac1d5"
 
       def install
         bin.install "pv-migrate"
@@ -46,19 +57,8 @@ class PvMigrate < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.5/pv-migrate_v0.10.5_linux_arm64.tar.gz"
-      sha256 "2a2d3966417dd6d32cfb1ab4d44dae6c59d393c120cb433a57eec01ebbacdd37"
-
-      def install
-        bin.install "pv-migrate"
-        bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
-        zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
-        fish_completion.install "completions/pv-migrate.fish"
-      end
-    end
-    if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.5/pv-migrate_v0.10.5_linux_x86_64.tar.gz"
-      sha256 "3fd56219330ddb6b1de152f623563d25cb13bbf0bff0808e9eeb72dfaa73da48"
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v0.10.6/pv-migrate_v0.10.6_linux_arm64.tar.gz"
+      sha256 "6c3c751fcf0826973d39edb8304bf40b736170b42e5baecd546795b5bb6fc0cd"
 
       def install
         bin.install "pv-migrate"
