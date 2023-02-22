@@ -19,6 +19,8 @@ jobs:
         if: ${{ matrix.os == 'ubuntu-20.04' }}
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+          (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /root/.profile
+          eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
       - name: Brew tap
         run: brew tap utkuozdemir/pv-migrate
       - name: Brew install
