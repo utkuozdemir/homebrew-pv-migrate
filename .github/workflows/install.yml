@@ -6,6 +6,8 @@ on:
       - master
     paths-ignore:
       - "**.md"
+env:
+  HOMEBREW_NO_ANALYTICS: "1"
 jobs:
   install:
     runs-on: ${{ matrix.os }}
