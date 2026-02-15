@@ -3,7 +3,7 @@ name: install
 on:
   push:
     branches:
-      - master
+      - main
     paths-ignore:
       - "**.md"
 env:
