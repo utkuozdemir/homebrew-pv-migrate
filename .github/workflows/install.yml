@@ -6,6 +6,11 @@ on:
       - main
     paths-ignore:
       - "**.md"
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md"
 env:
   HOMEBREW_NO_ANALYTICS: "1"
 jobs:
