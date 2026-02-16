@@ -23,7 +23,7 @@ jobs:
           - ubuntu-latest
     steps:
       - name: Install homebrew
-        if: ${{ matrix.os == 'ubuntu-20.04' }}
+        if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
           /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
           (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.profile
