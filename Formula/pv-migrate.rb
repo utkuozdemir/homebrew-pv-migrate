@@ -5,26 +5,26 @@
 class PvMigrate < Formula
   desc "Persistent volume migration plugin for Kubernetes"
   homepage "https://github.com/utkuozdemir/pv-migrate"
-  version "1.1.0"
+  version "3.0.0"
   license "Apache-2.0"
 
   on_macos do
-    if Hardware::CPU.arm?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v1.1.0/pv-migrate_v1.1.0_darwin_arm64.tar.gz"
-      sha256 "5aaae51e447cc0bd47c8b5175f9bab81f120bb88938f1337f7556921c7602267"
+    if Hardware::CPU.intel?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v3.0.0/pv-migrate_v3.0.0_darwin_x86_64.tar.gz"
+      sha256 "f3c75f57387f5d764db73b859f7ddef70344ecf5a2815b2820a54b902093b383"
 
-      def install
+      define_method(:install) do
         bin.install "pv-migrate"
         bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
         zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
         fish_completion.install "completions/pv-migrate.fish"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v1.1.0/pv-migrate_v1.1.0_darwin_x86_64.tar.gz"
-      sha256 "e40761036e950298f213ce47856696ef7355f78b170f69c8bc494bc2d7f37b40"
+    if Hardware::CPU.arm?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v3.0.0/pv-migrate_v3.0.0_darwin_arm64.tar.gz"
+      sha256 "63826a0273930b85f4f484ddbde5560249f58beb1b794f1e6917e8aabd0bbb13"
 
-      def install
+      define_method(:install) do
         bin.install "pv-migrate"
         bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
         zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
@@ -34,22 +34,20 @@ class PvMigrate < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v1.1.0/pv-migrate_v1.1.0_linux_armv7.tar.gz"
-      sha256 "4162586396415cf56c38ad8e455963535f218203b891d422e61ae26b220634d4"
-
-      def install
+    if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v3.0.0/pv-migrate_v3.0.0_linux_x86_64.tar.gz"
+      sha256 "dbc4185678e9781c12172cf67637d2904334c5f5626faf1e6bdaa9af50a9a668"
+      define_method(:install) do
         bin.install "pv-migrate"
         bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
         zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
         fish_completion.install "completions/pv-migrate.fish"
       end
     end
-    if Hardware::CPU.intel?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v1.1.0/pv-migrate_v1.1.0_linux_x86_64.tar.gz"
-      sha256 "ee847d8cef8b5b7d3a7ae5e76cb1c71ba9c46bd86081e030b134b0780973c6e3"
-
-      def install
+    if Hardware::CPU.arm? && !Hardware::CPU.is_64_bit?
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v3.0.0/pv-migrate_v3.0.0_linux_armv7.tar.gz"
+      sha256 "8d0d5773b50f897e626bfa2e8f40f30d1dd3e54658cb467d3640fad75ca00f53"
+      define_method(:install) do
         bin.install "pv-migrate"
         bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
         zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
@@ -57,10 +55,9 @@ class PvMigrate < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v1.1.0/pv-migrate_v1.1.0_linux_arm64.tar.gz"
-      sha256 "4649b28a41c99ad6a63925ed0aa4bb814c54a16c9cd8af836ba5d9508ceab6e6"
-
-      def install
+      url "https://github.com/utkuozdemir/pv-migrate/releases/download/v3.0.0/pv-migrate_v3.0.0_linux_arm64.tar.gz"
+      sha256 "c7e40cd59c486053ab26e9c02c6c1ac2c86ab39e78e5b245d1ec0223c6d189a4"
+      define_method(:install) do
         bin.install "pv-migrate"
         bash_completion.install "completions/pv-migrate.bash" => "pv-migrate"
         zsh_completion.install "completions/pv-migrate.zsh" => "_pv-migrate"
