@@ -11,8 +11,16 @@ on:
       - main
     paths-ignore:
       - "**.md"
+permissions:
+  contents: read
 env:
   HOMEBREW_NO_ANALYTICS: "1"
+  # after the install, Homebrew reads the tap's repository through the GitHub
+  # API. Without credentials it probes for them, on Linux also through the
+  # macOS keychain helper, which does not exist there, and the write into that
+  # dead process sporadically fails the install with "Broken pipe". Nothing
+  # here needs the API, so it is switched off
+  HOMEBREW_NO_GITHUB_API: "1"
 jobs:
   install:
     runs-on: ${{ matrix.os }}
@@ -29,9 +37,10 @@ jobs:
           (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.profile
           eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
           echo "/home/linuxbrew/.linuxbrew/bin" >> $GITHUB_PATH
-      - name: Brew tap
-        run: brew tap utkuozdemir/pv-migrate
+      # the fully qualified name: Homebrew loads a cask from a non-official tap
+      # only when it is trusted, and installing the cask by its full name
+      # trusts exactly that cask. This is the command the install guide gives
       - name: Brew install
-        run: brew install pv-migrate
+        run: brew install utkuozdemir/pv-migrate/pv-migrate
       - name: Run command
         run: pv-migrate --version
